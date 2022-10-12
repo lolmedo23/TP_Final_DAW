@@ -15,7 +15,7 @@ routerLogRiegos.get('/:idElectrovalvula', function(req, res) {
 
 //Espera recibir por parámetro un id de electrovalvula, fecha, valor de apertura y lo inserta en base de datos.
 routerLogRiegos.post('/agregarLog', function(req, res) {
-    pool.query('Insert into Log_Riegos (apertura,fecha,electrovalvulaId) values (?,?,?)', [req.body.apertura, req.body.fecha, req.body.electrovalvulaId], function(err, result, fields) {
+    pool.query('Insert into Log_Riegos (apertura,fecha,electrovalvulaid) values (?,?,?)', [req.body.apertura, req.body.fecha, req.body.electrovalvulaId], function(err, result, fields) {
         if (err) {
             res.send(err).status(400);
             return;

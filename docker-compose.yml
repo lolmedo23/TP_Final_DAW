@@ -43,7 +43,7 @@ services:
         depends_on:
             -                    mysql-server
         ports: 
-            -                    "8000:3000"
+            -                    "3000:3000"
         command:                 nodemon /home/node/app/src/index.js
 
 networks:

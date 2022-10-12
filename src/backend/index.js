@@ -1,8 +1,15 @@
 //=======[ Settings, Imports & Data ]==========================================
 var express = require('express');
-var PORT    = 3000;
 var app     = express();
+var PORT    = 3000;
+var cors = require('cors');
+//Config de CORS
+var corsConfig = { 
+    origin: '*',
+    optionSuccessStatus:200   
+};
 
+app.use(cors(corsConfig));
 app.use(express.json()); 
 
 //ruteo dispositivo

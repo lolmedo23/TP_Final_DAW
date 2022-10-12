@@ -13,4 +13,15 @@ routerDispositivo.get('/', function(req, res) {
     });
 });
 
+//Devuelve un dispositivo
+routerDispositivo.get('/:idDispositivo', function(req, res) {
+    pool.query('Select * from Dispositivos where dispositivoId=?', [req.params.idDispositivo], function(err, result, fields) {
+        if (err) {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(result[0]);
+    });
+});
+
 module.exports = routerDispositivo;

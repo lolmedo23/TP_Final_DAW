@@ -12,8 +12,8 @@ var configMysql = {
 }
 
 //=======[ Main module code ]==================================================
-
 var pool = mysql.createPool(configMysql);
+
 pool.getConnection((err, connection) => {
     if (err) {
         switch (err.code) {
@@ -25,6 +25,9 @@ pool.getConnection((err, connection) => {
                 break;
             case 'ECONNREFUSED':
                 console.error('La conexion fue rechazada');
+            case 'ER_CON_COUNT_ERROR':
+                console.error('La base de datos tiene muchas conexiones');
+                break;
         }
         if (connection) {
             connection.release();
